@@ -61,9 +61,7 @@ def takeCommand():
 if __name__ == "__main__":
     wishMe()
     while True:
-        if 1:
-         query = takeCommand().lower()
-
+        query = takeCommand().lower()
           # Logic for executing tasks based on query
         if 'wikipedia' in query:
            speak('Searching Wikipedia...')
