@@ -9,7 +9,7 @@ import smtplib
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 # print(voices[1].id)
-engine.setProperty('voice', voices[1].id)
+engine.setProperty('voice', voices[1].id)#There are two voices, Voice(1) For Women and Voice(2) for Men.
 
 
 def speak(audio):
@@ -28,10 +28,10 @@ def wishMe():
     else:
         speak("Good Evening!Arpan Soni") 
 
-    speak("I am Jarvis Speed 1 Terahertz, memory 1 gigabyte. Please tell me how may I help you")       
+    speak("I am Chitthi, Speed 1 Terahertz, memory 1 gigabyte. Please tell me how may I help you")       
 
 def takeCommand():
-    #It takes microphone input from the user and returns string output
+########################It takes microphone input from the user and returns string output#####################
 
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -49,8 +49,8 @@ def takeCommand():
          print("Say that again please...")  
          return "None"
     return query
-
- def sendEmail(to, content):
+############################# Send SMS To Anyone Function#############################
+def sendEmail(to, content):
      server = smtplib.SMTP('smtp.gmail.com', 587)
      server.ehlo()
      server.starttls()
@@ -61,10 +61,9 @@ def takeCommand():
 if __name__ == "__main__":
     wishMe()
     while True:
-        if:
-         query = takeCommand().lower()
+        query = takeCommand().lower()
 
-          # Logic for executing tasks based on query
+########################## Logic for executing tasks based on query########################################
         if 'wikipedia' in query:
            speak('Searching Wikipedia...')
            query = query.replace("wikipedia", "")
@@ -73,38 +72,46 @@ if __name__ == "__main__":
            print(results)
            speak(results)
 
-             elif 'open youtube' in query:
+        
+        elif 'open youtube' in query:
              webbrowser.open("youtube.com")
 
-            elif 'open google' in query:
+        elif 'open google' in query:
              webbrowser.open("google.com")
 
-            elif 'open stackoverflow' in query:
+        elif 'open stackoverflow' in query:
              webbrowser.open("stackoverflow.com")   
 
 
-            elif 'play music' in query:
-             music_dir = 'D:\\Non Critical\\songs\\Favorite Songs2'
+        elif 'play music/song' in query:
+             music_dir = 'E:\\Arpan Soni\\My music'
              songs = os.listdir(music_dir)
              print(songs)    
-             os.startfile(os.path.join(music_dir, songs[0]))
+             os.startfile(os.path.join(music_dir, songs[1]))
 
-            elif 'the time' in query:
+        elif 'the time' in query:
              strTime = datetime.datetime.now().strftime("%H:%M:%S")    
              speak(f"Sir, the time is {strTime}")
 
-            elif 'open code' in query:
-             codePath = "C:\\Users\\Haris\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
-             os.startfile(codePath)
-
-            elif 'email to harry' in query:
+        elif 'open Facebook' in query:
+             webbrowser.open("facebook.com")
+            
+        elif 'shutdown' in query:
+             os.system("shutdown /s /t 1")
+        
+        elif 'Restart' in query:
+             os.system("shutdown /r /t 1")    
+                
+            
+        elif 'email to Arpan' in query:
              try:
                  speak("What should I say?")
                  content = takeCommand()
-                 to = "harryyourEmail@gmail.com"    
+                 to = "ArpanLAL@gmail.com" #You can set your E-Mail Here.   
                  sendEmail(to, content)
                  speak("Email has been sent!")
              except Exception as e:
                  print(e)
                  speak("Sorry my friend Arpan Soni. I am not able to send this email")    
-
+                
+#By Arpan Soni
